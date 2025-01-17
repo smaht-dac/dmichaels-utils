@@ -4,4 +4,7 @@ dist
 *-bak
 __pycache__
 .pytest_cache
+*secret*json
+*secret*txt
+*secret*yml
 .**.py
