@@ -1,0 +1,74 @@
+[tool.poetry]
+name = "dmichaels-utils"
+version = "1.1.1"
+description = "Miscellaneous Python utilities from HMS DBMI"
+authors = ["Davd Michaels <david_michaels@4hms.harvard.deu>"]
+license = "MIT"
+readme = "README.rst"
+homepage = "https://github.com/smaht-dac/dmichaels-utils"
+repository = "https://github.com/smaht-dac/dmichaels-utils.git"
+documentation = "https://github.com/smaht-dac/dmichaels-utils"
+packages = [{include="dmichaels_utils", from="src"}]
+
+[tool.setuptools]
+packages = ["dmichaels_utils"]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.13"
+boto3 = "^1.35.22"
+botocore = "^1.35.14"
+dcicutils = "^8.16.4"
+importlib = "^1.0.4"
+passlib = "^1.7.4"
+prettytable = "^3.12.0"
+requests = "^2.23.2"
+termcolor = "^2.4.0"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^7.1.1"
+pytest = "^7.4.2"
+pytest-cov = ">=2.7.1"
+pytest-mock = ">=1.11.0"
+pytest-redis = "^3.0.2"
+pytest-runner = ">=5.1"
+
+[tool.poetry.scripts]
+hms-aws-ecs = "dmichaels_utils.aws_ecs:main"
+hms-aws-env = "dmichaels_utils.aws_env:main"
+hms-aws-env-hidden = "dmichaels_utils.aws_env:main"
+
+hms-config = "dmichaels_utils.config.config_cli:main" # new
+hms-config-export = "dmichaels_utils.config.config_cli:main_show_script_path"
+hms-config-exports = "dmichaels_utils.config.config_cli:main_show_script_path"
+
+hms-portals = "dmichaels_utils.portal.portal_envs:main" # new
+hms-portal-view = "dmichaels_utils.portal.view_portal_object:main"
+hms-portal-update = "dmichaels_utils.portal.update_portal_object:main"
+hms-portal-indexing-status = "dmichaels_utils.portal.indexing_status:main"
+hms-portal-errors = "dmichaels_utils.portal.portal_validation_errors:main"
+hms-portal-reindex = "dmichaels_utils.portal.portal_reindex_items:main"
+
+hms-portal-items-without-consortia = "dmichaels_utils.portal.oneoff.portal_items_without_consortia:main"
+hms-portal-add-consortia-to-items = "dmichaels_utils.portal.oneoff.portal_add_consortia_to_items:main"
+hms-portal-randomize-md5sum-values = "dmichaels_utils.portal.oneoff.randomize_md5sum_values:main"
+
+# TODO: In progress; rewrite/refactor of hms-portal-view/hms-portal-update.
+hms-portal-read = "dmichaels_utils.portal.portal_read:main"
+hms-portal-write = "dmichaels_utils.portal.portal_write:main"
+hms-portal-users = "dmichaels_utils.portal.portal_users:main"
+hms-portal-user-update = "dmichaels_utils.portal.portal_user_update:main"
+hms-portal-simple-update = "dmichaels_utils.portal.portal_simple_update:main"
+hms-portal-permissions = "dmichaels_utils.portal.portal_permissions:main"
+hms-portal-files = "dmichaels_utils.portal.portal_files:main"
+hms-portal-item-conflicts = "dmichaels_utils.portal.portal_item_conflicts:main"
+
+hms-encrypt = "dmichaels_utils.cli.crypt_cli:main_encrypt"
+hms-decrypt = "dmichaels_utils.cli.crypt_cli:main_decrypt"
+
+hms-portal-generate-access-key = "dmichaels_utils.portal.portal_generate_access_key:main"
+
+publish-to-pypi = "dcicutils.scripts.publish_to_pypi:main"
+
+[build-system]
+requires = ["setuptools>=74.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
