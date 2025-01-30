@@ -213,10 +213,16 @@ def get_nth_value_in_dictionary(data: dict, nth: int) -> str:
 
 
 def users_are_equal(user_from_spreadsheet: dict, user_from_portal: dict, indent: int = 0):
+
     user_from_spreadsheet = deepcopy(user_from_spreadsheet)
     user_from_spreadsheet[PROPERTY.EMAIL] = user_from_spreadsheet[PROPERTY.EMAIL].lower()
+    if user_from_spreadsheet.get(PROPERTY.SUBMISSION_CENTERS) == []:
+        del user_from_spreadsheet[PROPERTY.SUBMISSION_CENTERS]
+
     user_from_portal = deepcopy(user_from_portal)
     user_from_portal[PROPERTY.EMAIL] = user_from_portal[PROPERTY.EMAIL].lower()
+    if user_from_portal.get(PROPERTY.SUBMISSION_CENTERS) == []:
+        del user_from_portal[PROPERTY.SUBMISSION_CENTERS]
     del user_from_portal["uuid"]
     return user_from_spreadsheet == user_from_portal
 
