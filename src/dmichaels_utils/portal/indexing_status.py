@@ -62,11 +62,11 @@ def report_indexing_status_and_counts(name, domain, verbose):
             item_elasticsearch_count = parse_elasticsearch_count(value)
             if item_database_count != item_elasticsearch_count:
                 if database_count > elasticsearch_count:
-                    database_suffix = f" {chars.rarrow_hollow} {database_count - elasticsearch_count} more"
+                    database_suffix = f" {chars.rarrow_hollow} {item_database_count - item_elasticsearch_count} more"
                     elasticsearch_suffix = ""
                 elif elasticsearch_count > database_count:
                     database_suffix = ""
-                    elasticsearch_suffix = f" {chars.rarrow_hollow} {elasticsearch_count - database_count} more"
+                    elasticsearch_suffix = f" {chars.rarrow_hollow} {item_elasticsearch_count - item_database_count} more"
                 else:
                     database_suffix = ""
                     elasticsearch_suffix = ""
